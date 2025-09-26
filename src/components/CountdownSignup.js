@@ -128,7 +128,7 @@ const APPS_SCRIPT_URL = process.env.REACT_APP_APPS_SCRIPT_URL;
         {/* Logo at top */}
         <div className={styles.logoContainer}>
           <img 
-            src="/tom-teller-logo.png" 
+            src="/assets/tom-teller-logo.png" 
             alt="Tom&Teller" 
             className={styles.logo}
           />
