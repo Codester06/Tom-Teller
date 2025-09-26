@@ -1,0 +1,489 @@
+/* CountdownSignup.module.css */
+
+.container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+.logoContainer {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.logo {
+  max-width: 600px;
+  max-height: 240px;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(4px 4px 0px #000);
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.centerContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+  max-width: 600px;
+  z-index: 5;
+}
+
+.signupContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  width: 100%;
+  max-width: 450px;
+  box-sizing: border-box;
+}
+
+.emailInput {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 1rem 1.5rem;
+  border: none;
+  background: transparent;
+  color: #333;
+  outline: none;
+  flex: 1;
+  min-width: 0;
+  box-sizing: border-box;
+  border-radius: 12px 0 0 12px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.emailInput::placeholder {
+  color: #888;
+  opacity: 1;
+  text-align: center;
+}
+
+.signupBtn {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, #4c7fff, #2f5ce8);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  transition: all 0.3s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  min-width: 100px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 0 2px 8px rgba(76, 127, 255, 0.2);
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.signupBtn:hover {
+  background: linear-gradient(135deg, #3b6dff, #1e4bd6);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(76, 127, 255, 0.3);
+}
+
+.signupBtn:active {
+  background: linear-gradient(135deg, #2f5ce8, #1a42c4);
+  transform: translateY(0);
+}
+
+.timerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2.5rem 3rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.timer {
+  font-size: 3.5rem;
+  color: #00ffff;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.2rem;
+  text-shadow: 
+    0 0 5px rgba(0, 255, 255, 0.3),
+    1px 1px 2px rgba(0, 0, 0, 0.5);
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.timerLabel {
+  font-size: 1.5rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.4rem;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  text-shadow: 
+    0 0 3px rgba(255, 255, 255, 0.2),
+    1px 1px 2px rgba(0, 0, 0, 0.5);
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.glitch {
+  animation: glitch 0.3s ease-in-out;
+}
+
+@keyframes glitch {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-2px); }
+  40% { transform: translateX(2px); }
+  60% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
+  100% { transform: translateX(0); }
+}
+
+.successMessage {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+  border: 4px solid #00ff00;
+  padding: 2rem;
+  color: #00ff00;
+  font-size: 1rem;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  text-align: center;
+  z-index: 20;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 0, 0.5),
+    8px 8px 0px #000;
+}
+
+.successSubtext {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: #ccc;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .logoContainer {
+    top: 1.5rem;
+  }
+  
+  .logo {
+    max-width: 500px;
+    max-height: 200px;
+  }
+  
+  .centerContent {
+    max-width: 90%;
+    gap: 2.5rem;
+  }
+  
+  .inputWrapper {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .logoContainer {
+    top: 1rem;
+  }
+  
+  .logo {
+    max-width: 450px;
+    max-height: 180px;
+  }
+  
+  .centerContent {
+    max-width: 95%;
+    gap: 2rem;
+  }
+  
+  .inputWrapper {
+    max-width: 380px;
+  }
+  
+  .timer {
+    font-size: 3rem;
+    letter-spacing: 0.15rem;
+  }
+  
+  .emailInput {
+    font-size: 1rem;
+    padding: 0.9rem 1.2rem;
+  }
+  
+  .signupBtn {
+    font-size: 0.95rem;
+    padding: 0.9rem 1.2rem;
+    min-width: 95px;
+  }
+  
+  .timerLabel {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .logo {
+    max-width: 420px;
+    max-height: 168px;
+  }
+  
+  .centerContent {
+    gap: 1.8rem;
+  }
+  
+  .inputWrapper {
+    max-width: 350px;
+  }
+  
+  .timerContainer {
+    padding: 1.8rem 2rem;
+  }
+  
+  .timer {
+    font-size: 2.5rem;
+  }
+  
+  .timerLabel {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem 0.8rem;
+  }
+  
+  .logoContainer {
+    top: 0.8rem;
+  }
+  
+  .logo {
+    max-width: 350px;
+    max-height: 140px;
+  }
+  
+  .centerContent {
+    gap: 1.5rem;
+    max-width: 98%;
+  }
+  
+  .inputWrapper {
+    max-width: 320px;
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .timerContainer {
+    padding: 1.5rem 1.8rem;
+  }
+  
+  .timer {
+    font-size: 2.2rem;
+    letter-spacing: 0.1rem;
+  }
+  
+  .timerLabel {
+    font-size: 1rem;
+    letter-spacing: 0.2rem;
+  }
+  
+  .emailInput {
+    font-size: 0.95rem;
+    padding: 0.8rem 1rem;
+    border-bottom: none;
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .signupBtn {
+    font-size: 0.9rem;
+    padding: 0.8rem 1rem;
+    width: 100%;
+    min-width: auto;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding: 0.8rem 0.5rem;
+  }
+  
+  .logoContainer {
+    top: 0.5rem;
+  }
+  
+  .logo {
+    max-width: 300px;
+    max-height: 120px;
+  }
+  
+  .centerContent {
+    gap: 1.3rem;
+  }
+  
+  .inputWrapper {
+    max-width: 280px;
+  }
+  
+  .timerContainer {
+    padding: 1.3rem 1.5rem;
+  }
+  
+  .timer {
+    font-size: 1.9rem;
+  }
+  
+  .timerLabel {
+    font-size: 0.9rem;
+  }
+  
+  .emailInput {
+    font-size: 0.9rem;
+    padding: 0.7rem 0.8rem;
+  }
+  
+  .signupBtn {
+    font-size: 0.85rem;
+    padding: 0.7rem 0.8rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .logoContainer {
+    top: 0.3rem;
+  }
+  
+  .logo {
+    max-width: 280px;
+    max-height: 110px;
+  }
+  
+  .centerContent {
+    gap: 1.1rem;
+  }
+  
+  .inputWrapper {
+    max-width: 260px;
+  }
+  
+  .timerContainer {
+    padding: 1.1rem 1.3rem;
+  }
+  
+  .timer {
+    font-size: 1.7rem;
+  }
+  
+  .timerLabel {
+    font-size: 0.8rem;
+  }
+  
+  .emailInput {
+    font-size: 0.85rem;
+    padding: 0.6rem 0.7rem;
+  }
+  
+  .signupBtn {
+    font-size: 0.8rem;
+    padding: 0.6rem 0.7rem;
+  }
+}
+
+/* Add these styles to your existing CountdownSignup.module.css */
+
+.errorMessage {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, #ff6b6b, #ff5252);
+  color: white;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+  text-align: center;
+  z-index: 1000;
+  font-family: 'Arial', sans-serif;
+  animation: slideInError 0.3s ease-out;
+}
+
+.errorSubtext {
+  font-size: 14px;
+  margin-top: 8px;
+  opacity: 0.9;
+}
+
+.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.signupBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.emailInput:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+@keyframes slideInError {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}

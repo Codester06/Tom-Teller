@@ -1,0 +1,135 @@
+.app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Fallback background if video doesn't load */
+.app::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #000 25%, #111 25%, #111 50%, #000 50%, #000 75%, #111 75%, #111);
+  background-size: 40px 40px;
+  z-index: 0;
+}
+
+/* Mobile and Tablet Optimizations */
+@media (max-width: 768px) {
+  .app {
+    /* Fix for iOS Safari viewport issues */
+    height: 100vh;
+    height: -webkit-fill-available;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+  
+  .background-video {
+    /* Ensure proper video scaling on mobile */
+    object-fit: cover;
+    object-position: center center;
+  }
+  
+  .app::before {
+    /* Smaller pattern for mobile screens */
+    background-size: 30px 30px;
+  }
+}
+
+/* Small Mobile Phones */
+@media (max-width: 480px) {
+  .app {
+    /* Prevent horizontal scrolling */
+    overflow-x: hidden;
+    /* Address bar handling for mobile browsers */
+    height: 100vh;
+    height: -webkit-fill-available;
+  }
+  
+  .background-video {
+    /* Optimize video positioning for mobile */
+    object-position: center center;
+    /* Prevent video from being too large on small screens */
+    min-width: 100%;
+    min-height: 100%;
+  }
+  
+  .app::before {
+    /* Even smaller pattern for very small screens */
+    background-size: 20px 20px;
+  }
+}
+
+/* Portrait orientation optimizations */
+@media (orientation: portrait) and (max-width: 768px) {
+  .background-video {
+    /* Ensure video covers full screen in portrait */
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (orientation: landscape) and (max-height: 500px) {
+  .app {
+    /* Handle landscape mode on phones */
+    height: 100vh;
+    height: -webkit-fill-available;
+  }
+  
+  .background-video {
+    /* Maintain aspect ratio in landscape */
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
+/* Fix for very small screens */
+@media (max-width: 320px) {
+  .app::before {
+    background-size: 15px 15px;
+  }
+}
+
+/* High DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .background-video {
+    /* Optimize video quality for retina displays */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+  }
+}
+
+/* Performance optimizations for older mobile devices */
+@media (max-width: 768px) {
+  .background-video {
+    /* Enable hardware acceleration on mobile */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: transform;
+  }
+}
+
+/* Fix for iOS Safari bottom bar */
+@supports (-webkit-touch-callout: none) {
+  .app {
+    height: -webkit-fill-available;
+  }
+}
