@@ -20,8 +20,8 @@
 }
 
 .logo {
-  max-width: 600px;
-  max-height: 240px;
+  max-width: 350px;
+  max-height: 125px;
   width: 100%;
   height: auto;
   filter: drop-shadow(4px 4px 0px #000);
@@ -95,8 +95,8 @@
   font-weight: bold;
   font-size: 1rem;
   padding: 1rem 1.5rem;
-  background: linear-gradient(135deg, #4c7fff, #2f5ce8);
-  color: #fff;
+  background: #00ffff;
+  color: #000;
   border: none;
   cursor: pointer;
   text-transform: uppercase;
@@ -107,21 +107,36 @@
   flex-shrink: 0;
   box-sizing: border-box;
   border-radius: 0 8px 8px 0;
-  box-shadow: 0 2px 8px rgba(76, 127, 255, 0.2);
+  box-shadow: 0 2px 8px rgba(0, 255, 255, 0.2);
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
 }
 
 .signupBtn:hover {
-  background: linear-gradient(135deg, #3b6dff, #1e4bd6);
+  background: #00e6e6;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(76, 127, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 255, 255, 0.3);
 }
 
 .signupBtn:active {
-  background: linear-gradient(135deg, #2f5ce8, #1a42c4);
+  background: #00cccc;
   transform: translateY(0);
+}
+
+.dropText {
+  font-size: 1.2rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.2), 1px 1px 2px rgba(0, 0, 0, 0.5);
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  text-align: center;
+  margin-bottom: -2rem;
 }
 
 .timerContainer {
@@ -266,6 +281,11 @@
   .timerLabel {
     font-size: 0.95rem;
   }
+
+  .dropText {
+    font-size: 1rem;
+    letter-spacing: 0.15rem;
+  }
 }
 
 @media (max-width: 640px) {
@@ -349,6 +369,12 @@
     min-width: auto;
     border-top: none;
     border-radius: 0 0 8px 8px;
+  }
+
+  .dropText {
+    font-size: 0.9rem;
+    letter-spacing: 0.1rem;
+    margin-bottom: -1rem;
   }
 }
 
@@ -435,6 +461,11 @@
   .signupBtn {
     font-size: 0.8rem;
     padding: 0.6rem 0.7rem;
+  }
+
+  .dropText {
+    font-size: 0.8rem;
+    letter-spacing: 0.05rem;
   }
 }
 

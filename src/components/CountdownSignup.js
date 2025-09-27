@@ -17,9 +17,9 @@ const APPS_SCRIPT_URL = process.env.REACT_APP_APPS_SCRIPT_URL;
     const updateCountdown = () => {
       const now = new Date().getTime();
       
-      // Set target date (30 days from now for demo)
+      // Set target date (3 months from now for demo)
       const targetDate = new Date();
-      targetDate.setDate(targetDate.getDate() + 30);
+      targetDate.setMonth(targetDate.getMonth() + 3);
       targetDate.setHours(10, 3, 0, 0); // 10:03 AM
       
       const distance = targetDate - now;
@@ -155,10 +155,12 @@ const APPS_SCRIPT_URL = process.env.REACT_APP_APPS_SCRIPT_URL;
                 onClick={handleSubmit}
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Subscribing...' : 'Subscribe'}
+                {isSubmitting ? 'Joining...' : 'Join'}
               </button>
             </div>
           </div>
+
+          <div className={styles.dropText}>Be a part of our first drop.</div>
           
           {/* Timer */}
           <div className={styles.timerContainer}>
