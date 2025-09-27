@@ -160,7 +160,7 @@ const APPS_SCRIPT_URL = process.env.REACT_APP_APPS_SCRIPT_URL;
             </div>
           </div>
 
-          <div className={styles.dropText}>Be a part of our first drop.</div>
+          <div className={styles.dropText}>Be a part of our first drop</div>
           
           {/* Timer */}
           <div className={styles.timerContainer}>
