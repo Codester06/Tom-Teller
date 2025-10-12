@@ -1,0 +1,486 @@
+/* ResponsiveVideoBackground Component Styles */
+
+.responsive-video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  z-index: 1;
+}
+
+/* Fallback background pattern */
+.video-fallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #000 25%, #111 25%, #111 50%, #000 50%, #000 75%, #111 75%, #111);
+  background-size: 40px 40px;
+  z-index: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.video-fallback.visible {
+  opacity: 1;
+}
+
+.video-fallback.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Custom fallback image support */
+.video-fallback[style*="background-image"] {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* Video element styles */
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  
+  /* Performance optimizations */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+}
+
+.background-video.loaded {
+  opacity: 1;
+}
+
+/* Loading indicator */
+.video-loading-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top: 3px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Debug information */
+.video-debug-info {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 12px;
+  z-index: 10;
+  line-height: 1.4;
+}
+
+.video-debug-info div {
+  margin-bottom: 2px;
+}
+
+/* Mobile and Tablet Optimizations */
+@media (max-width: 768px) {
+  .video-fallback {
+    /* Smaller pattern for mobile screens */
+    background-size: 30px 30px;
+  }
+  
+  .background-video {
+    /* Ensure proper video scaling on mobile */
+    object-fit: cover;
+    object-position: center center;
+    
+    /* iOS Safari optimizations */
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+  }
+  
+  .loading-spinner {
+    width: 30px;
+    height: 30px;
+    border-width: 2px;
+  }
+  
+  .video-debug-info {
+    font-size: 10px;
+    padding: 8px;
+  }
+}
+
+/* Small Mobile Phones */
+@media (max-width: 480px) {
+  .video-fallback {
+    /* Even smaller pattern for very small screens */
+    background-size: 20px 20px;
+  }
+  
+  .background-video {
+    /* Optimize video positioning for mobile */
+    object-position: center center;
+    /* Prevent video from being too large on small screens */
+    min-width: 100%;
+    min-height: 100%;
+  }
+  
+  .loading-spinner {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Portrait orientation optimizations */
+@media (orientation: portrait) and (max-width: 768px) {
+  .background-video {
+    /* Ensure video covers full screen in portrait */
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (orientation: landscape) and (max-height: 500px) {
+  .background-video {
+    /* Maintain aspect ratio in landscape */
+    object-fit: cover;
+    object-position: center center;
+  }
+  
+  .video-debug-info {
+    top: 5px;
+    left: 5px;
+    padding: 5px;
+    font-size: 9px;
+  }
+}
+
+/* Fix for very small screens */
+@media (max-width: 320px) {
+  .video-fallback {
+    background-size: 15px 15px;
+  }
+}
+
+/* High DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .background-video {
+    /* Optimize video quality for retina displays */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+  }
+}
+
+/* Hardware acceleration and performance optimizations for mobile */
+@media (max-width: 768px) {
+  .background-video {
+    /* Enable hardware acceleration on mobile */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: transform, opacity;
+    
+    /* Additional hardware acceleration properties */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    
+    /* GPU layer promotion */
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    
+    /* Optimize compositing */
+    isolation: isolate;
+  }
+  
+  .responsive-video-background {
+    /* Container optimizations for mobile */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    contain: layout style paint;
+  }
+}
+
+/* Android Chrome specific optimizations */
+@media screen and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
+  /* Standard density Android devices */
+  .background-video {
+    /* Optimize for standard density screens */
+    image-rendering: auto;
+    -webkit-optimize-contrast: auto;
+  }
+}
+
+@media screen and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 1.5) {
+  /* High density Android devices (1.5x) */
+  .background-video {
+    /* Optimize for high density screens */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+  }
+}
+
+@media screen and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
+  /* Extra high density Android devices (2x) */
+  .background-video {
+    /* Optimize for extra high density screens */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+@media screen and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 3) {
+  /* Ultra high density Android devices (3x) */
+  .background-video {
+    /* Optimize for ultra high density screens */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+    image-rendering: pixelated;
+  }
+}
+
+/* iOS Safari viewport height fixes and optimizations */
+@supports (-webkit-touch-callout: none) {
+  .responsive-video-background {
+    /* Use -webkit-fill-available for iOS Safari to handle dynamic viewport */
+    height: -webkit-fill-available;
+    min-height: -webkit-fill-available;
+  }
+  
+  /* iOS Safari video handling optimizations */
+  .background-video {
+    /* Prevent iOS Safari from showing video controls */
+    -webkit-media-controls: none;
+    -webkit-media-controls-panel: none;
+    -webkit-media-controls-play-button: none;
+    -webkit-media-controls-start-playback-button: none;
+    
+    /* iOS Safari specific video optimizations */
+    -webkit-transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+    
+    /* Prevent iOS Safari video zoom */
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* iOS Safari specific viewport handling */
+@media screen and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 2) {
+  .responsive-video-background {
+    /* Handle iPhone X and newer notch areas */
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+  
+  .background-video {
+    /* Ensure video covers safe areas */
+    width: calc(100% + env(safe-area-inset-left) + env(safe-area-inset-right));
+    height: calc(100% + env(safe-area-inset-top) + env(safe-area-inset-bottom));
+    margin-left: calc(-1 * env(safe-area-inset-left));
+    margin-top: calc(-1 * env(safe-area-inset-top));
+  }
+}
+
+/* Accessibility - Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .video-fallback,
+  .background-video {
+    transition: none;
+  }
+  
+  .loading-spinner {
+    animation: none;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* Focus states for accessibility */
+.background-video:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Battery-aware optimizations for mobile devices */
+@media (max-width: 768px) {
+  /* Reduce animations and effects when battery is low */
+  .background-video.battery-saver {
+    /* Disable hardware acceleration to save battery */
+    transform: none;
+    -webkit-transform: none;
+    will-change: auto;
+    
+    /* Reduce video quality effects */
+    filter: none;
+    -webkit-filter: none;
+    
+    /* Disable smooth transitions to save CPU */
+    transition: none;
+  }
+  
+  .video-fallback.battery-saver {
+    /* Simplify fallback pattern for battery saving */
+    background: #000;
+    animation: none;
+  }
+  
+  /* Performance mode for older/slower devices */
+  .background-video.performance-mode {
+    /* Minimal hardware acceleration */
+    transform: translateZ(0);
+    will-change: opacity;
+    
+    /* Disable expensive visual effects */
+    filter: none;
+    backdrop-filter: none;
+    
+    /* Optimize rendering */
+    image-rendering: auto;
+  }
+}
+
+/* Thermal throttling optimizations */
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+  .background-video {
+    /* Reduce processing load when motion is reduced */
+    will-change: auto;
+    transform: none;
+    -webkit-transform: none;
+  }
+}
+
+/* Additional mobile-specific optimizations */
+@media (max-width: 768px) {
+  /* Optimize for mobile touch interactions */
+  .responsive-video-background {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Mobile video element optimizations */
+  .background-video {
+    /* Prevent video from being draggable on mobile */
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    
+    /* Optimize video rendering on mobile */
+    -webkit-optimize-contrast: auto;
+    image-rendering: auto;
+    
+    /* Prevent context menu on long press */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Thermal critical state optimizations */
+  .background-video.thermal-critical {
+    /* Minimal processing for overheated devices */
+    transform: none !important;
+    -webkit-transform: none !important;
+    will-change: auto !important;
+    filter: none !important;
+    opacity: 0.8; /* Reduce brightness to help cooling */
+  }
+  
+  /* Low memory device optimizations */
+  .background-video.low-memory {
+    /* Reduce memory usage */
+    image-rendering: auto;
+    -webkit-optimize-contrast: auto;
+  }
+}
+
+/* iOS Safari specific video handling */
+@media screen and (-webkit-min-device-pixel-ratio: 1) and (max-width: 768px) {
+  .background-video {
+    /* iOS Safari video optimization */
+    -webkit-media-controls: none !important;
+    -webkit-media-controls-panel: none !important;
+    -webkit-media-controls-play-button: none !important;
+    -webkit-media-controls-start-playback-button: none !important;
+    
+    /* Prevent iOS Safari video controls overlay */
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  
+  /* Handle iOS Safari safe areas */
+  .responsive-video-background {
+    /* Ensure video covers notch areas */
+    padding: 0;
+    margin: 0;
+  }
+}
+
+/* Android Chrome specific optimizations */
+@media screen and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 1) {
+  .background-video {
+    /* Android Chrome video optimizations */
+    object-fit: cover;
+    object-position: center center;
+    
+    /* Optimize for Android's memory management */
+    image-rendering: auto;
+  }
+}
+
+/* Ultra-wide screen support */
+@media (min-aspect-ratio: 21/9) {
+  .background-video {
+    object-fit: cover;
+    object-position: center center;
+  }
+}
+
+/* Very tall screens */
+@media (max-aspect-ratio: 9/16) {
+  .background-video {
+    object-fit: cover;
+    object-position: center center;
+  }
+}
