@@ -105,6 +105,16 @@
   cursor: not-allowed;
 }
 
+.disclaimerText {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  font-size: 0.75rem;
+  color: #666;
+  text-align: center;
+  margin: 0.5rem 0 0 0;
+  max-width: 320px;
+  line-height: 1.3;
+}
+
 /* Countdown Section */
 .countdownSection {
   display: flex;
@@ -163,6 +173,25 @@
 .timeLabel {
   min-width: 3ch;
   text-align: center;
+}
+
+/* Bottom Disclaimer */
+.bottomDisclaimer {
+  margin-top: 3rem;
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: center;
+}
+
+.bottomDisclaimerText {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  font-size: 0.7rem;
+  color: #666;
+  text-align: center;
+  margin: 0;
+  line-height: 1.4;
+  padding: 0 1rem;
 }
 
 /* Success and Error Messages */
@@ -253,6 +282,11 @@
     font-size: 1rem;
   }
   
+  .disclaimerText {
+    font-size: 0.8rem;
+    max-width: 400px;
+  }
+  
   .countdownTitle {
     font-size: 1.4rem;
   }
@@ -265,6 +299,11 @@
   .timerLabels {
     gap: 4.5rem;
     font-size: 1.1rem;
+  }
+  
+  .bottomDisclaimerText {
+    font-size: 0.75rem;
+    max-width: 500px;
   }
 }
 
@@ -305,6 +344,11 @@
     font-size: 1.1rem;
   }
   
+  .disclaimerText {
+    font-size: 0.85rem;
+    max-width: 480px;
+  }
+  
   .countdownTitle {
     font-size: 1.6rem;
   }
@@ -317,6 +361,11 @@
   .timerLabels {
     gap: 6rem;
     font-size: 1.2rem;
+  }
+  
+  .bottomDisclaimerText {
+    font-size: 0.8rem;
+    max-width: 600px;
   }
 }
 
@@ -361,6 +410,12 @@
     font-size: 0.85rem;
   }
   
+  .disclaimerText {
+    font-size: 0.7rem;
+    max-width: 280px;
+    margin: 0.3rem 0 0 0;
+  }
+  
   .countdownTitle {
     font-size: 1.19rem;
   }
@@ -373,5 +428,14 @@
   .timerLabels {
     gap: 2.1rem;
     font-size: 0.9rem;
+  }
+  
+  .bottomDisclaimer {
+    margin-top: 2rem;
+  }
+  
+  .bottomDisclaimerText {
+    font-size: 0.65rem;
+    padding: 0 0.5rem;
   }
 }

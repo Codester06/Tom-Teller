@@ -150,6 +150,10 @@ const APPS_SCRIPT_URL = process.env.REACT_APP_APPS_SCRIPT_URL;
                 {isSubmitting ? 'JOINING...' : 'JOIN'}
               </button>
             </div>
+            
+            <p className={styles.disclaimerText}>
+              By joining us, you agree to receive emails and text messages from us.
+            </p>
           </div>
 
           {/* Countdown section */}
@@ -173,6 +177,13 @@ const APPS_SCRIPT_URL = process.env.REACT_APP_APPS_SCRIPT_URL;
                 <span className={styles.timeLabel}>Sec</span>
               </div>
             </div>
+          </div>
+          
+          {/* Bottom disclaimer */}
+          <div className={styles.bottomDisclaimer}>
+            <p className={styles.bottomDisclaimerText}>
+              By submitting this form, you agree that Tom & Teller may contact you with service-related e-mails (such as order confirmations and updates) as well as promotional e-mails (such as special offers or reminders). E-mails may be sent using automated technology. Your consent is optional and not required to complete a purchase.
+            </p>
           </div>
         </div>
       </div>
