@@ -72,12 +72,14 @@
   background: #fff;
   color: #000;
   font-size: 1rem;
+  font-weight: bold;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
   outline: none;
 }
 
 .emailInput::placeholder {
   color: #999;
+  font-weight: bold;
 }
 
 .signupBtn {
@@ -154,6 +156,7 @@
   gap: 3rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
   font-size: 1rem;
+  font-weight: bold;
   color: #000;
 }
 
@@ -175,12 +178,14 @@
   text-align: center;
   z-index: 1000;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  font-weight: bold;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .successSubtext {
   margin-top: 0.5rem;
   font-size: 0.9rem;
+  font-weight: bold;
   opacity: 0.9;
 }
 
@@ -196,12 +201,14 @@
   text-align: center;
   z-index: 1000;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  font-weight: bold;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .errorSubtext {
   margin-top: 0.5rem;
   font-size: 0.9rem;
+  font-weight: bold;
   opacity: 0.9;
 }
 
