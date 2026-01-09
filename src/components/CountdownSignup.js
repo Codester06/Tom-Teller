@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react';
 import styles from './CountdownSignup.module.css';
 
 const CountdownSignup = () => {
-  const [timeLeft, setTimeLeft] = useState('30:10:03:00');
+  const [timeLeft, setTimeLeft] = useState({ days: '00', hours: '00', minutes: '00', seconds: '00' });
   const [email, setEmail] = useState('');
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isGlitching, setIsGlitching] = useState(false);
 
   // Replace with your deployed Google Apps Script Web App URL
 const APPS_SCRIPT_URL = process.env.REACT_APP_APPS_SCRIPT_URL;
@@ -17,10 +16,8 @@ const APPS_SCRIPT_URL = process.env.REACT_APP_APPS_SCRIPT_URL;
     const updateCountdown = () => {
       const now = new Date().getTime();
       
-      // Set target date (3 months from now for demo)
-      const targetDate = new Date();
-      targetDate.setMonth(targetDate.getMonth() + 3);
-      targetDate.setHours(10, 3, 0, 0); // 10:03 AM
+      // Set target date to April 1st, 2026 at 10:03 AM
+      const targetDate = new Date('2026-04-01T10:03:00');
       
       const distance = targetDate - now;
       
@@ -30,21 +27,14 @@ const APPS_SCRIPT_URL = process.env.REACT_APP_APPS_SCRIPT_URL;
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
         
-        // Format with leading zeros
-        const formattedDays = days.toString().padStart(2, '0');
-        const formattedHours = hours.toString().padStart(2, '0');
-        const formattedMinutes = minutes.toString().padStart(2, '0');
-        const formattedSeconds = seconds.toString().padStart(2, '0');
-        
-        setTimeLeft(`${formattedDays}:${formattedHours}:${formattedMinutes}:${formattedSeconds}`);
-        
-        // Add glitch effect occasionally
-        if (seconds % 10 === 0 && Math.random() > 0.7) {
-          setIsGlitching(true);
-          setTimeout(() => setIsGlitching(false), 300);
-        }
+        setTimeLeft({
+          days: days.toString().padStart(3, '0'),
+          hours: hours.toString().padStart(2, '0'),
+          minutes: minutes.toString().padStart(2, '0'),
+          seconds: seconds.toString().padStart(2, '0')
+        });
       } else {
-        setTimeLeft("00:00:00:00");
+        setTimeLeft({ days: '000', hours: '00', minutes: '00', seconds: '00' });
       }
     };
     
@@ -134,10 +124,12 @@ const APPS_SCRIPT_URL = process.env.REACT_APP_APPS_SCRIPT_URL;
           />
         </div>
         
-        {/* Centered content (input and timer) */}
-        <div className={styles.centerContent}>
-          {/* Input field */}
-          <div className={styles.signupContainer}>
+        {/* Main content */}
+        <div className={styles.mainContent}>
+          {/* Signup section */}
+          <div className={styles.signupSection}>
+            <h2 className={styles.signupTitle}>JOIN OUR FIRST EVER COLLECTION "PHASE 01"</h2>
+            
             <div className={styles.inputWrapper}>
               <input 
                 type="email" 
@@ -155,19 +147,32 @@ const APPS_SCRIPT_URL = process.env.REACT_APP_APPS_SCRIPT_URL;
                 onClick={handleSubmit}
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Joining...' : 'Join'}
+                {isSubmitting ? 'JOINING...' : 'JOIN'}
               </button>
             </div>
           </div>
 
-          <div className={styles.dropText}>Be a part of our first drop</div>
-          
-          {/* Timer */}
-          <div className={styles.timerContainer}>
-            <div className={`${styles.timer} ${isGlitching ? styles.glitch : ''}`}>
-              {timeLeft}
+          {/* Countdown section */}
+          <div className={styles.countdownSection}>
+            <h3 className={styles.countdownTitle}>PHASE 01 DROP</h3>
+            
+            <div className={styles.timerContainer}>
+              <div className={styles.timerNumbers}>
+                <span className={styles.timeUnit}>{timeLeft.days}</span>
+                <span className={styles.separator}>:</span>
+                <span className={styles.timeUnit}>{timeLeft.hours}</span>
+                <span className={styles.separator}>:</span>
+                <span className={styles.timeUnit}>{timeLeft.minutes}</span>
+                <span className={styles.separator}>:</span>
+                <span className={styles.timeUnit}>{timeLeft.seconds}</span>
+              </div>
+              <div className={styles.timerLabels}>
+                <span className={styles.timeLabel}>Day</span>
+                <span className={styles.timeLabel}>Hrs</span>
+                <span className={styles.timeLabel}>Min</span>
+                <span className={styles.timeLabel}>Sec</span>
+              </div>
             </div>
-            <div className={styles.timerLabel}>COMING SOON</div>
           </div>
         </div>
       </div>
