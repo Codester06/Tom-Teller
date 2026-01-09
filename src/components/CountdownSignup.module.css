@@ -47,7 +47,7 @@
 }
 
 .signupTitle {
-  font-family: 'Arial', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
   font-size: 1.2rem;
   font-weight: bold;
   color: #000;
@@ -72,7 +72,7 @@
   background: #fff;
   color: #000;
   font-size: 1rem;
-  font-family: 'Arial', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
   outline: none;
 }
 
@@ -87,7 +87,7 @@
   border: none;
   font-size: 1rem;
   font-weight: bold;
-  font-family: 'Arial', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 0.05rem;
@@ -113,7 +113,7 @@
 }
 
 .countdownTitle {
-  font-family: 'Arial', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
   font-size: 1.2rem;
   font-weight: bold;
   color: #000;
@@ -133,7 +133,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  font-family: 'Arial', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
   font-size: 3rem;
   font-weight: bold;
   color: #000;
@@ -152,7 +152,7 @@
   display: flex;
   align-items: center;
   gap: 3rem;
-  font-family: 'Arial', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
   font-size: 1rem;
   color: #000;
 }
@@ -174,7 +174,7 @@
   border-radius: 8px;
   text-align: center;
   z-index: 1000;
-  font-family: 'Arial', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
@@ -195,7 +195,7 @@
   border-radius: 8px;
   text-align: center;
   z-index: 1000;
-  font-family: 'Arial', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
@@ -355,16 +355,16 @@
   }
   
   .countdownTitle {
-    font-size: 1rem;
+    font-size: 1.19rem;
   }
   
   .timerNumbers {
-    font-size: 2rem;
-    gap: 0.5rem;
+    font-size: 1.55rem;
+    gap: 0.2rem;
   }
   
   .timerLabels {
-    gap: 1.5rem;
-    font-size: 0.8rem;
+    gap: 2.1rem;
+    font-size: 0.9rem;
   }
 }
