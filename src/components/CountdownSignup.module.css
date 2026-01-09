@@ -105,6 +105,15 @@
   cursor: not-allowed;
 }
 
+.signupBtn.joined {
+  background: #4CAF50;
+  color: #fff;
+}
+
+.signupBtn.joined:hover {
+  background: #4CAF50;
+}
+
 .disclaimerText {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
   font-size: 0.75rem;

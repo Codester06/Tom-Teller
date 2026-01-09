@@ -8,6 +8,7 @@ const CountdownSignup = () => {
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isJoined, setIsJoined] = useState(false);
 
   // Replace with your deployed Google Apps Script Web App URL
 const APPS_SCRIPT_URL = process.env.REACT_APP_APPS_SCRIPT_URL;
@@ -83,6 +84,7 @@ const APPS_SCRIPT_URL = process.env.REACT_APP_APPS_SCRIPT_URL;
       
       if (result.success) {
         setShowSuccess(true);
+        setIsJoined(true);
         setEmail('');
         
         // Hide success message after 3 seconds
@@ -107,7 +109,7 @@ const APPS_SCRIPT_URL = process.env.REACT_APP_APPS_SCRIPT_URL;
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter' && !isSubmitting) {
+    if (e.key === 'Enter' && !isSubmitting && !isJoined) {
       handleSubmit();
     }
   };
@@ -138,16 +140,16 @@ const APPS_SCRIPT_URL = process.env.REACT_APP_APPS_SCRIPT_URL;
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 onKeyPress={handleKeyPress}
-                disabled={isSubmitting}
+                disabled={isSubmitting || isJoined}
                 required
               />
               <button 
                 type="button" 
-                className={`${styles.signupBtn} ${isSubmitting ? styles.loading : ''}`}
+                className={`${styles.signupBtn} ${isSubmitting ? styles.loading : ''} ${isJoined ? styles.joined : ''}`}
                 onClick={handleSubmit}
-                disabled={isSubmitting}
+                disabled={isSubmitting || isJoined}
               >
-                {isSubmitting ? 'JOINING...' : 'JOIN'}
+                {isSubmitting ? 'JOINING...' : isJoined ? 'JOINED ✓' : 'JOIN'}
               </button>
             </div>
             
@@ -191,7 +193,7 @@ const APPS_SCRIPT_URL = process.env.REACT_APP_APPS_SCRIPT_URL;
       {/* Success Message */}
       {showSuccess && (
         <div className={styles.successMessage}>
-          <div>Successfully Subscribed!</div>
+          <div>Successfully Joined!</div>
           <div className={styles.successSubtext}>
             We'll notify you when we launch!
           </div>
