@@ -28,13 +28,13 @@ const APPS_SCRIPT_URL = process.env.REACT_APP_APPS_SCRIPT_URL;
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
         
         setTimeLeft({
-          days: days.toString().padStart(3, '0'),
+          days: days.toString(),
           hours: hours.toString().padStart(2, '0'),
           minutes: minutes.toString().padStart(2, '0'),
           seconds: seconds.toString().padStart(2, '0')
         });
       } else {
-        setTimeLeft({ days: '000', hours: '00', minutes: '00', seconds: '00' });
+        setTimeLeft({ days: '0', hours: '00', minutes: '00', seconds: '00' });
       }
     };
     

@@ -59,7 +59,7 @@
 .inputWrapper {
   display: flex;
   width: 100%;
-  max-width: 400px;
+  max-width: 320px;
   border: 2px solid #000;
   border-radius: 0;
   overflow: hidden;
@@ -67,11 +67,11 @@
 
 .emailInput {
   flex: 1;
-  padding: 1rem 1.5rem;
+  padding: 0.8rem 1.2rem;
   border: none;
   background: #fff;
   color: #000;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: bold;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
   outline: none;
@@ -83,11 +83,11 @@
 }
 
 .signupBtn {
-  padding: 1rem 2rem;
+  padding: 0.8rem 1.5rem;
   background: #000;
   color: #fff;
   border: none;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: bold;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
   cursor: pointer;
@@ -117,7 +117,7 @@
 .countdownTitle {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
   font-size: 1.2rem;
-  font-weight: bold;
+  font-weight: 900;
   color: #000;
   text-align: center;
   margin: 0;
@@ -240,17 +240,17 @@
   }
   
   .inputWrapper {
-    max-width: 500px;
+    max-width: 400px;
   }
   
   .emailInput {
-    padding: 1.2rem 2rem;
-    font-size: 1.1rem;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
   }
   
   .signupBtn {
-    padding: 1.2rem 2.5rem;
-    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    font-size: 1rem;
   }
   
   .countdownTitle {
@@ -292,17 +292,17 @@
   }
   
   .inputWrapper {
-    max-width: 600px;
+    max-width: 480px;
   }
   
   .emailInput {
-    padding: 1.5rem 2.5rem;
-    font-size: 1.2rem;
+    padding: 1.2rem 1.8rem;
+    font-size: 1.1rem;
   }
   
   .signupBtn {
-    padding: 1.5rem 3rem;
-    font-size: 1.2rem;
+    padding: 1.2rem 2.2rem;
+    font-size: 1.1rem;
   }
   
   .countdownTitle {
@@ -347,18 +347,18 @@
   
   .inputWrapper {
     flex-direction: column;
-    max-width: 300px;
+    max-width: 280px;
   }
   
   .emailInput {
-    padding: 1rem;
-    font-size: 0.9rem;
+    padding: 0.8rem;
+    font-size: 0.85rem;
     border-bottom: 1px solid #ccc;
   }
   
   .signupBtn {
-    padding: 1rem;
-    font-size: 0.9rem;
+    padding: 0.8rem;
+    font-size: 0.85rem;
   }
   
   .countdownTitle {
