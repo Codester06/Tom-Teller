@@ -13,6 +13,11 @@ const CountdownSignup = () => {
   // Replace with your deployed Google Apps Script Web App URL
 const APPS_SCRIPT_URL = process.env.REACT_APP_APPS_SCRIPT_URL;
 
+  // Set page title
+  useEffect(() => {
+    document.title = 'Join Us';
+  }, []);
+
   useEffect(() => {
     const updateCountdown = () => {
       const now = new Date().getTime();
