@@ -15,7 +15,7 @@ const APPS_SCRIPT_URL = process.env.REACT_APP_APPS_SCRIPT_URL;
 
   // Set page title
   useEffect(() => {
-    document.title = 'Join Us';
+    document.title = ' Tom&Teller - Join Us';
   }, []);
 
   useEffect(() => {
