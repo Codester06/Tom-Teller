@@ -386,13 +386,13 @@
   
   .logoContainer {
     margin-top: -40px;
-    margin-bottom: 1.5rem;
+    margin-bottom: .8rem;
   }
   
   .logo {
     max-width: 160px;
     max-height: 56px;
-    margin-bottom:40px
+    margin-bottom:30px
   }
   
   .mainContent {
@@ -440,7 +440,7 @@
   }
   
   .bottomDisclaimer {
-    margin-top: 2rem;
+    margin-top: 1.2rem;
   }
   
   .bottomDisclaimerText {
