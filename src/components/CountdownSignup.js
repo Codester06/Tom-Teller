@@ -15,7 +15,13 @@ const APPS_SCRIPT_URL = process.env.REACT_APP_APPS_SCRIPT_URL;
 
   // Set page title
   useEffect(() => {
-    document.title = ' Tom&Teller - Join Us';
+    document.title = 'Join Us - Tom&Teller';
+    
+    // Check if there are any submitted emails in localStorage
+    const submittedEmails = JSON.parse(localStorage.getItem('submittedEmails') || '[]');
+    if (submittedEmails.length > 0) {
+      console.log('Previously submitted emails found:', submittedEmails.length);
+    }
   }, []);
 
   useEffect(() => {
@@ -52,6 +58,7 @@ const APPS_SCRIPT_URL = process.env.REACT_APP_APPS_SCRIPT_URL;
 
   const submitEmailToGoogleSheets = async (emailAddress) => {
     try {
+      // eslint-disable-next-line no-unused-vars
       const response = await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
         headers: {
@@ -69,7 +76,13 @@ const APPS_SCRIPT_URL = process.env.REACT_APP_APPS_SCRIPT_URL;
       
     } catch (error) {
       console.error('Error submitting email:', error);
-      return { success: false, message: 'Network error occurred' };
+      
+      // Check if it's a duplicate email error
+      if (error.message && error.message.includes('duplicate')) {
+        return { success: false, isDuplicate: true, message: 'Email already exists' };
+      }
+      
+      return { success: false, isDuplicate: false, message: 'Network error occurred' };
     }
   };
 
@@ -82,12 +95,25 @@ const APPS_SCRIPT_URL = process.env.REACT_APP_APPS_SCRIPT_URL;
       return;
     }
 
+    // Check if email was already submitted (client-side check)
+    const submittedEmails = JSON.parse(localStorage.getItem('submittedEmails') || '[]');
+    if (submittedEmails.includes(email.toLowerCase())) {
+      setErrorMessage('You have already joined with this email!');
+      setShowError(true);
+      setTimeout(() => setShowError(false), 3000);
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
       const result = await submitEmailToGoogleSheets(email);
       
       if (result.success) {
+        // Store email in localStorage to prevent duplicate submissions
+        const updatedEmails = [...submittedEmails, email.toLowerCase()];
+        localStorage.setItem('submittedEmails', JSON.stringify(updatedEmails));
+        
         setShowSuccess(true);
         setIsJoined(true);
         setEmail('');
@@ -98,6 +124,10 @@ const APPS_SCRIPT_URL = process.env.REACT_APP_APPS_SCRIPT_URL;
         }, 3000);
         
         console.log('Email successfully submitted:', email);
+      } else if (result.isDuplicate) {
+        setErrorMessage('You have already joined with this email!');
+        setShowError(true);
+        setTimeout(() => setShowError(false), 3000);
       } else {
         setErrorMessage(result.message || 'Failed to submit email');
         setShowError(true);
