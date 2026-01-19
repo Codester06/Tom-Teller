@@ -58,23 +58,21 @@ const APPS_SCRIPT_URL = process.env.REACT_APP_APPS_SCRIPT_URL;
 
   const submitEmailToGoogleSheets = async (emailAddress) => {
     try {
+      // eslint-disable-next-line no-unused-vars
       const response = await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        mode: 'no-cors', // Required for Google Apps Script
         body: JSON.stringify({
           email: emailAddress
         })
       });
 
-      // Check if the response indicates success
-      if (response.ok) {
-        const result = await response.json();
-        return result;
-      } else {
-        return { success: false, message: 'Server error occurred' };
-      }
+      // With no-cors mode, we can't read the response
+      // So we assume success if no error is thrown
+      return { success: true };
       
     } catch (error) {
       console.error('Error submitting email:', error);
@@ -121,16 +119,7 @@ const APPS_SCRIPT_URL = process.env.REACT_APP_APPS_SCRIPT_URL;
         
         console.log('Email successfully submitted:', email);
       } else {
-        // Handle server-side duplicate detection
-        if (result.message && result.message.includes('already subscribed')) {
-          // Store email in localStorage since server confirmed it exists
-          const updatedEmails = [...submittedEmails, email.toLowerCase()];
-          localStorage.setItem('submittedEmails', JSON.stringify(updatedEmails));
-          
-          setErrorMessage('You have already joined with this email!');
-        } else {
-          setErrorMessage(result.message || 'Failed to submit email');
-        }
+        setErrorMessage(result.message || 'Failed to submit email');
         setShowError(true);
         setTimeout(() => setShowError(false), 3000);
       }
